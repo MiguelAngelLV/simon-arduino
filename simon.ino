@@ -8,8 +8,8 @@ int mSize = 0;
 
 void setup() {
  for (byte i = 0; i < 4; i++) {
-  pinMode(i, INPUT);
-  pinMode(i+4, OUTPUT);
+  pinMode(2*i, INPUT);
+  pinMode(2*i+1, OUTPUT);
  }
  
  randomSeed(analogRead(0));
@@ -47,10 +47,10 @@ void loop() {
 
 
 void encender(int i) {
- digitalWrite(i+4, HIGH);
+ digitalWrite(2*i+1, HIGH);
  tone(9, sonidos[i], 100);  
  delay(500);
- digitalWrite(i+4, LOW);
+ digitalWrite(2*i+1, LOW);
  
 }
 
@@ -59,7 +59,7 @@ byte pulsado() {
   
  while (true) {
   for (byte i = 0; i < 4; i++)
-    if (digitalRead(i))
+    if (digitalRead(2*i))
       return i;
   
   
@@ -76,12 +76,12 @@ void start() {
   for (byte j = 0; j < 5; j++) {
     
    for (byte i = 0; i < 4; i++) 
-     digitalWrite(i+4, HIGH);
+     digitalWrite(2*i+1, HIGH);
     
     delay(200);
      
    for (byte i = 0; i < 4; i++) 
-     digitalWrite(i+4, LOW); 
+     digitalWrite(2*i+1, LOW); 
      
     delay(200);
   }
